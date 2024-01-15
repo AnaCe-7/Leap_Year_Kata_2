@@ -5,13 +5,13 @@ describe('Tests validating leap years', () =>{
 
     const leap_year = new LeapYear();
     
-    test('Test returns true when a year is divisible by 4', () =>{
+    test('Test returns true when a year is divisible by 400', () =>{
 
         /**
          * GHERKIN TEST
-         * GIVEN / ARRANCHE: a number, (a year)
-         * WHEN / ACT: when it is divisible by: a) 4, b) but not by 100, c) but divisible by 400
-         * THEN / ASSERT: returns: a) firstTrue, b) secondTrue, c) thirdTrue as result
+         * GIVEN / ARRANCHE: years (Tested years are in range 1600 ≤ year ≤ 4000)
+         * WHEN / ACT: when it is divisible by: a) 400 b) or it is divisible by 4 c) but not by 100
+         * THEN / ASSERT: returns: a) true b) true c) false
          */
 
         //ARRANGE: set the stage, the inputs and outputs I expect
@@ -25,9 +25,9 @@ describe('Tests validating leap years', () =>{
         expect(current_response).toBe(expected_response)
     });
 
-    test('Test returns true when a number is divisible by 400', () =>{
+    test('Test returns true when a number is divisible by 4', () =>{
 
-        const given_number = 1980;
+        const given_number = 2000;
         const expected_response = true;
 
         const current_response = leap_year.validate_leap_year(given_number);
@@ -35,7 +35,7 @@ describe('Tests validating leap years', () =>{
         expect(current_response).toBe(expected_response)
     });
 
-   test ('Test returns false when the same number is divisible by 100 but not divisible by 400', () =>{
+   test ('Test returns false when the same number is not divisible by 100', () =>{
 
         const given_number = 1800;
         const expected_response = false;
